@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recetas tradicionales y modernas de marquesitas. Aprende a preparar marquesitas dulces y saladas con técnicas profesionales para food trucks.">
+    <meta name="keywords" content="marquesitas, recetas, yucatán, antojitos mexicanos, food truck, cocina mexicana">
+    <meta name="author" content="Marquesitas Gourmet">
+    <title>Marquesitas Gourmet - Recetas Tradicionales y Modernas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #2C3E50;
+            --accent-color: #F8F9FA;
+            --text-color: #333;
+            --light-gray: #ECF0F1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #FF8A65);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--primary-color);
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .recipe-header {
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .recipe-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .recipe-type {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .ingredients, .instructions {
+            margin-bottom: 1.5rem;
+        }
+
+        .ingredients h4, .instructions h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .ingredients ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ingredients li {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .ingredients li::before {
+            content: "•";
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .instructions ol {
+            padding-left: 1.2rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .tips-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .tip-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .food-truck-section {
+            background: linear-gradient(135deg, var(--secondary-color), #34495e);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .food-truck-section h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .business-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .business-tip {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .business-tip h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, transparent 0%, var(--primary-color) 0%, var(--primary-color) 30%, transparent 30%);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .recipe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0.2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🌮 Marquesitas Gourmet</h1>
+            <p>Recetas tradicionales y modernas desde Yucatán para el mundo</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#tradicionales">Tradicionales</a></li>
+                <li><a href="#modernas">Modernas</a></li>
+                <li><a href="#saladas">Saladas</a></li>
+                <li><a href="#tips">Tips Profesionales</a></li>
+                <li><a href="#food-truck">Food Truck</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section id="inicio" class="hero">
+                <h2>El Arte de las Marquesitas</h2>
+                <p>Descubre los secretos de este delicioso antojito yucateco que ha conquistado corazones. Desde recetas tradicionales hasta innovaciones modernas, aprende a preparar marquesitas perfectas con técnicas profesionales ideales para emprendimientos y food trucks.</p>
+            </section>
+
+            <section id="tradicionales" class="section">
+                <h2 class="section-title">Recetas Tradicionales</h2>
+                <div class="recipe-grid">
+                    <div class="recipe-card">
+                        <div class="recipe-header">
+                            <h3 class="recipe-title">Marquesita Clásica de Queso Edam</h3>
+                            <span class="recipe-type">Tradicional</span>
+                        </div>
+                        <div class="recipe-meta">
+                            <span>⏱️ Tiempo: 15 min</span>
+                            <span>👥 Porciones: 1</span>
+                            <span>🔥 Dificultad: Fácil</span>
+                        </div>
+                        <div class="ingredients">
+                            <h4>Ingredientes:</h4>
+                            <ul>
+                                <li>1 taza de harina de trigo</li>
+                                <li>1/2 taza de agua tibia</li>
+                                <li>1 cucharada de aceite</li>
+                                <li>1/2 cucharadita de sal</li>
+                                <li>100g de queso Edam rallado</li>
+                                <li>Miel de abeja al gusto</li>
+                                <li>Mantequilla para cocinar</li>
+                            </ul>
+                        </div>
+                        <div class="instructions">
+                            <h4>Preparación:</h4>
+                            <ol>
+                                <li>Mezcla la harina, agua, aceite y sal hasta formar una masa suave</li>
+                                <li>Deja reposar 15 minutos</li>
+                                <li>Extiende muy delgada sobre superficie enharinada</li>
+                                <li>Cocina en comal o plancha caliente hasta dorar</li>
+                                <li>Agrega queso Edam mientras está caliente</li>
+                                <li>Enrolla inmediatamente y sirve con miel</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="recipe-card">
+                        <div class="recipe-header">
+                            <h3 class="recipe-title">Marquesita de Cajeta Casera</h3>
+                            <span class="recipe-type">Tradicional</span>
+                        </div>
+                        <div class="recipe-meta">
+                            <span>⏱️ Tiempo: 20 min</span>
+                            <span>👥 Porciones: 1</span>
+                            <span>🔥 Dificultad: Media</span>
+                        </div>
+                        <div class="ingredients">
+                            <h4>Ingredientes:</h4>
+                            <ul>
+                                <li>Masa básica de marquesita</li>
+                                <li>1/2 taza de cajeta casera</li>
+                                <li>50g de queso de bola rallado</li>
+                                <li>Nuez picada (opcional)</li>
+                                <li>Canela en polvo</li>
+                            </ul>
+                        </div>
+                        <div class="instructions">
+                            <h4>Preparación:</h4>
+                            <ol>
+                                <li>Prepara la marquesita base siguiendo la receta clásica</li>
+                                <li>Unta cajeta casera sobre la marquesita caliente</li>
+                                <li>Espolvorea queso de bola rallado</li>
+                                <li>Agrega nuez picada si deseas</li>
+                                <li>Espolvorea canela al gusto</li>
+                                <li>Enrolla cuidadosamente y sirve de inmediato</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="modernas" class="section">
+                <h2 class="section-title">Recetas Modernas</h2>
+                <div class="recipe-grid">
+                    <div class="recipe-card">
+                        <div class="recipe-header">
+                            <h3 class="recipe-title">Marquesita de Nutella y Fresas</h3>
+                            <span class="recipe-type">Moderna</span>
+                        </div>
+                        <div class="recipe-meta">
+                            <span>⏱️ Tiempo:
